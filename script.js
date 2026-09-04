@@ -53,12 +53,19 @@
     });
   }
 
-  /* ---- Hero entrance ---- */
+  /* ---- Hero entrance ----
+     Fixed-pixel offsets (not yPercent) deliberately: a percentage-based
+     transform is computed from each element's height at tween-creation
+     time, which races the Google Fonts swap (Archivo Black/Inter arrive
+     async) and can leave a line's initial transform stuck mid-animation
+     once the real font reflows it to a different height. Pixel offsets
+     don't depend on element height, so they can't desync like that. */
   gsap.set('.hero-sub', { opacity: 0, y: 16 });
+  gsap.set('.hero-title .line', { opacity: 0, y: 44 });
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
   heroTl
     .to('.hero-eyebrow', { opacity: 0.75, y: 0, duration: 0.7, delay: 0.2 })
-    .from('.hero-title .line', { yPercent: 110, duration: 0.9, stagger: 0.12 }, '-=0.3')
+    .to('.hero-title .line', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12 }, '-=0.3')
     .to('.hero-sub', { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
     .fromTo('.hero-scroll', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.5');
 
