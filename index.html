@@ -1,313 +1,237 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shyam Kumar — AI Red-Teaming &amp; Governance</title>
-<meta name="description" content="Shyam Kumar — red-teaming AI systems and translating the findings into risk an organisation can act on. NIST AI RMF · OWASP LLM Top 10 · MITRE ATLAS.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2317130f'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23ff6a1a' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%23ff6a1a'/%3E%3C/svg%3E">
-
-<!-- Social share previews (LinkedIn/Twitter/etc.) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shyam Kumar · AI red-teaming & governance</title>
+<meta name="description" content="Shyam Kumar, CSE student at Rajalakshmi Engineering College, Chennai: testing how AI systems fail, with an attacker and without one, and building the controls that hold. Kaaval, Kaappu, FairDoor, AquaNXT, UpAid, Virasat.">
+<meta name="theme-color" content="#e8e1d3">
+<meta property="og:title" content="Shyam Kumar · AI red-teaming & governance">
+<meta property="og:description" content="Red-teaming AI, then saying what to do about it. Six projects you can try in your browser.">
+<meta property="og:image" content="https://shyamvasansathiskumar-ux.github.io/og.png">
+<meta property="og:url" content="https://shyamvasansathiskumar-ux.github.io/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://portfolio-xi-umber-97.vercel.app/">
-<meta property="og:title" content="Shyam Kumar — AI Red-Teaming & Governance">
-<meta property="og:description" content="Red-teaming AI systems. Translating it into risk that gets acted on. CSE undergrad building both tracks in public — OWASP LLM Top 10, MITRE ATLAS, NIST AI RMF.">
-<meta property="og:image" content="https://portfolio-xi-umber-97.vercel.app/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Shyam Kumar — AI Red-Teaming & Governance">
-<meta name="twitter:description" content="Red-teaming AI systems. Translating it into risk that gets acted on.">
-<meta name="twitter:image" content="https://portfolio-xi-umber-97.vercel.app/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://shyamvasansathiskumar-ux.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315120e'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' fill='%23e8e1d3' text-anchor='middle' font-style='italic'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="cormorant.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script type="importmap">{ "imports": { "three": "./three.module.min.js" } }</script>
 </head>
 <body>
+<div class="loader" aria-hidden="true">
+  <div class="who"><span class="label bare">Shyam Kumar</span><span class="label bare">Chennai · 2026</span></div>
+  <div class="n"><b>00</b><sup>%</sup></div>
+</div>
+<canvas id="world" aria-hidden="true"></canvas>
+<ol class="rail" aria-label="Chapters"></ol>
 
-<div class="grain-overlay"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-
-<!-- NAV -->
-<header class="nav" id="nav">
-  <a href="#top" class="nav-mark" aria-label="Home">
-    <svg viewBox="0 0 100 100" class="mark-crosshair"><circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="50" cy="50" r="6" fill="currentColor"/><line x1="50" y1="2" x2="50" y2="26" stroke="currentColor" stroke-width="6"/><line x1="50" y1="74" x2="50" y2="98" stroke="currentColor" stroke-width="6"/><line x1="2" y1="50" x2="26" y2="50" stroke="currentColor" stroke-width="6"/><line x1="74" y1="50" x2="98" y2="50" stroke="currentColor" stroke-width="6"/></svg>
-    <span>S.KUMAR</span>
-  </a>
-  <nav class="nav-links">
-    <a href="#work"><span class="idx">01</span>Work</a>
-    <a href="#about"><span class="idx">02</span>About</a>
-    <a href="#creds"><span class="idx">03</span>Credentials</a>
-    <a href="#contact"><span class="idx">04</span>Contact</a>
-  </nav>
-  <a class="nav-cta" href="Shyam_Kumar_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
-  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span>Shyam Kumar</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="btn sm ghost" href="Shyam_Kumar_Resume.pdf" target="_blank" rel="noopener">Résumé <span class="arr">↗</span></a>
+  </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#work">01 — Work</a>
-  <a href="#about">02 — About</a>
-  <a href="#creds">03 — Credentials</a>
-  <a href="#contact">04 — Contact</a>
-  <a href="Shyam_Kumar_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
-</div>
-
-<!-- HERO -->
-<section class="hero" id="top" data-navtheme="dark">
-  <div class="hero-bg">
-    <svg class="hero-crosshair c1" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="1"/><line x1="50" y1="0" x2="50" y2="20" stroke="currentColor" stroke-width="1"/><line x1="50" y1="80" x2="50" y2="100" stroke="currentColor" stroke-width="1"/><line x1="0" y1="50" x2="20" y2="50" stroke="currentColor" stroke-width="1"/><line x1="80" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="1"/></svg>
-    <svg class="hero-crosshair c2" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="1"/><line x1="50" y1="0" x2="50" y2="20" stroke="currentColor" stroke-width="1"/><line x1="50" y1="80" x2="50" y2="100" stroke="currentColor" stroke-width="1"/><line x1="0" y1="50" x2="20" y2="50" stroke="currentColor" stroke-width="1"/><line x1="80" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="1"/></svg>
-    <div class="hero-grid"></div>
-  </div>
-
-  <p class="hero-eyebrow reveal-line"><span>AI SECURITY &amp; AI GOVERNANCE</span><span class="dot">•</span><span>CHENNAI, INDIA</span></p>
-
-  <h1 class="hero-title">
-    <span class="line" data-line="1">Red-teaming</span>
-    <span class="line" data-line="2">AI systems.</span>
-    <span class="line accent-line" data-line="3">Translating it into <span class="accent">risk that gets acted on.</span></span>
-  </h1>
-
-  <div class="hero-foot">
-    <p class="hero-sub reveal-line">CSE undergraduate building both tracks in public — hands-on red-teaming and the governance writing that turns findings into decisions.</p>
-    <a href="#work" class="hero-scroll">
-      <span>SCROLL</span>
-      <svg width="14" height="24" viewBox="0 0 14 24"><path d="M7 0 V22 M1 16 L7 22 L13 16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-track" id="marqueeTrack">
-    <span>OWASP LLM TOP 10</span><span class="sep">◆</span>
-    <span>MITRE ATLAS</span><span class="sep">◆</span>
-    <span>NIST AI RMF</span><span class="sep">◆</span>
-    <span>GARAK</span><span class="sep">◆</span>
-    <span>PYRIT</span><span class="sep">◆</span>
-    <span>PROMPT INJECTION</span><span class="sep">◆</span>
-    <span>RISK ASSESSMENT</span><span class="sep">◆</span>
-    <span>OWASP LLM TOP 10</span><span class="sep">◆</span>
-    <span>MITRE ATLAS</span><span class="sep">◆</span>
-    <span>NIST AI RMF</span><span class="sep">◆</span>
-    <span>GARAK</span><span class="sep">◆</span>
-    <span>PYRIT</span><span class="sep">◆</span>
-    <span>PROMPT INJECTION</span><span class="sep">◆</span>
-    <span>RISK ASSESSMENT</span><span class="sep">◆</span>
-  </div>
-</div>
-
-<!-- STATS -->
-<section class="stats" data-navtheme="dark">
-  <div class="stat reveal-up">
-    <span class="stat-num" data-count="10">0</span><span class="stat-plus">+</span>
-    <p>Certifications issued<br><span class="stat-sub">Anthropic, Sep 2026</span></p>
-  </div>
-  <div class="stat reveal-up">
-    <span class="stat-num" data-count="4">0</span>
-    <p>Repos logged<br><span class="stat-sub">Incidents · Red-team · Governance · Fundamentals</span></p>
-  </div>
-  <div class="stat reveal-up">
-    <span class="stat-num" data-count="3">0</span>
-    <p>Frameworks mapped<br><span class="stat-sub">OWASP · MITRE ATLAS · NIST AI RMF</span></p>
-  </div>
-  <div class="stat reveal-up">
-    <span class="stat-num-text">2029</span>
-    <p>Graduating<br><span class="stat-sub">B.E. CSE, Rajalakshmi Eng. College</span></p>
-  </div>
-</section>
-
-<!-- WORK -->
-<section class="work" id="work" data-navtheme="light">
-  <div class="section-head reveal-up">
-    <p class="eyebrow">01 / WORK</p>
-    <h2>Five repos. Two audiences. <span class="accent">Zero overlap.</span></h2>
-    <p class="section-sub">A recruiter checking red-teaming credibility and one checking whether the fundamentals hold are looking for different evidence. Each repo is built to answer one of those questions directly.</p>
-  </div>
-
-  <div class="work-list">
-
-    <a class="work-card reveal-up" href="https://github.com/shyamvasansathiskumar-ux/ai-incident-atlas" target="_blank" rel="noopener">
-      <div class="work-card-media" style="background-image:url('ai-incident-atlas.png')">
-        <span class="work-card-no">01</span>
+<main id="top">
+  <!-- 00 · hero -->
+  <section class="hero" id="hero" data-stage="0" data-chapter="Hello">
+    <div class="wrap hero-in">
+      <p class="label" data-intro>AI security · AI governance · Chennai</p>
+      <h1 class="display hero-title" data-intro-split>Shyam <em>Kumar</em></h1>
+      <p class="hero-sub" data-intro>Red-teaming AI. <em>Then saying what to do about it.</em></p>
+      <div class="hero-foot">
+        <p class="lede" data-intro>Second-year CSE at Rajalakshmi Engineering College. I test how AI systems fail, with an attacker and without one, and build the controls that hold when they do. <strong>Every project below runs in your browser.</strong></p>
       </div>
-      <div class="work-card-body">
-        <p class="work-card-eyebrow">AI Governance · AI Security</p>
-        <h3>ai-incident-atlas</h3>
-        <p>Ten publicly documented AI incidents mapped across OWASP LLM Top 10, MITRE ATLAS and NIST AI RMF, each with the control that would have stopped it. Six of them had no attacker at all, and ATLAS has no vocabulary for that.</p>
-        <div class="work-tags">
-          <span>Incident Analysis</span><span>Framework Crosswalk</span><span>Control Gaps</span>
-        </div>
-      </div>
-      <span class="work-card-arrow">↗</span>
-    </a>
-
-    <a class="work-card reveal-up" href="https://github.com/shyamvasansathiskumar-ux/redteam-log" target="_blank" rel="noopener">
-      <div class="work-card-media" style="background-image:url('redteam-log.png')">
-        <span class="work-card-no">02</span>
-      </div>
-      <div class="work-card-body">
-        <p class="work-card-eyebrow">AI Security · Personal Project</p>
-        <h3>redteam-log</h3>
-        <p>Working log of AI red-teaming practice against local LLMs — garak and PyRIT scans, CTF attempts, and the OWASP LLM Top 10 mapped to MITRE ATLAS technique by technique.</p>
-        <div class="work-tags">
-          <span>OWASP LLM Top 10</span><span>MITRE ATLAS</span><span>garak · PyRIT</span>
-        </div>
-      </div>
-      <span class="work-card-arrow">↗</span>
-    </a>
-
-    <a class="work-card reveal-up" href="https://github.com/shyamvasansathiskumar-ux/ai-governance-portfolio" target="_blank" rel="noopener">
-      <div class="work-card-media" style="background-image:url('ai-governance-portfolio.png')">
-        <span class="work-card-no">03</span>
-      </div>
-      <div class="work-card-body">
-        <p class="work-card-eyebrow">AI Governance · Personal Project</p>
-        <h3>ai-governance-portfolio</h3>
-        <p>Written work on AI governance, risk and assurance. Starts with a full NIST AI RMF assessment of AI coding agents with production access, including what India's DPDP Rules mean when the deletion is accidental.</p>
-        <div class="work-tags">
-          <span>NIST AI RMF</span><span>Risk Assessment</span><span>Policy</span>
-        </div>
-      </div>
-      <span class="work-card-arrow">↗</span>
-    </a>
-
-    <a class="work-card reveal-up" href="https://github.com/shyamvasansathiskumar-ux/cybersecurity-fundamentals" target="_blank" rel="noopener">
-      <div class="work-card-media" style="background-image:url('cybersecurity-fundamentals.png')">
-        <span class="work-card-no">04</span>
-      </div>
-      <div class="work-card-body">
-        <p class="work-card-eyebrow">Cybersecurity · Personal Project</p>
-        <h3>cybersecurity-fundamentals</h3>
-        <p>The base layer underneath the two AI-specific repos above — networking, web application security, cryptography, and classic CTF write-ups.</p>
-        <div class="work-tags">
-          <span>Networking</span><span>Cryptography</span><span>Web Security</span>
-        </div>
-      </div>
-      <span class="work-card-arrow">↗</span>
-    </a>
-
-    <a class="work-card reveal-up" href="https://github.com/shyamvasansathiskumar-ux/kaappu" target="_blank" rel="noopener">
-      <div class="work-card-media" style="background:#0d1b1e">
-        <span class="work-card-no">05</span>
-      </div>
-      <div class="work-card-body">
-        <p class="work-card-eyebrow">Applied Cryptography · Java</p>
-        <h3>kaappu</h3>
-        <p>A TOTP authenticator built from RFC 4226 and 6238 in plain Java, with an AES-GCM vault and Shamir secret-sharing backup so a lost phone or password isn't fatal. 70 tests, including every RFC test vector, and a written threat model.</p>
-        <div class="work-tags">
-          <span>TOTP</span><span>AES-GCM</span><span>Shamir</span>
-        </div>
-      </div>
-      <span class="work-card-arrow">↗</span>
-    </a>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about" data-navtheme="dark">
-  <div class="about-inner">
-    <p class="eyebrow reveal-up">02 / ABOUT</p>
-    <blockquote class="about-quote reveal-up">
-      “I'd rather be corrected than <span class="accent">confidently wrong.</span>”
-    </blockquote>
-    <div class="about-grid">
-      <p class="about-text reveal-up">
-        AI security and AI governance — testing how AI systems actually fail, and translating those failures into risk an organisation can act on. I'm a CSE undergraduate at Rajalakshmi Engineering College doing this in public: red-teaming local LLMs with garak, mapping the OWASP LLM Top 10 to MITRE ATLAS technique by technique, and building a parallel track of governance writing against the NIST AI RMF.
-        <br><br>
-        I also lead the Tech &amp; Skills Club under ASU Pathways at REC, and I'm layering in cybersecurity fundamentals to strengthen the technical side of this work. Early in the field, building deliberately — open to anyone working in AI assurance, model risk, or red-teaming.
-      </p>
-      <div class="about-side reveal-up">
-        <div class="about-block">
-          <p class="about-label">Education</p>
-          <p class="about-value">B.E. Computer Science &amp; Engineering</p>
-          <p class="about-meta">Rajalakshmi Engineering College · Aug 2025 – May 2029</p>
-        </div>
-        <div class="about-block">
-          <p class="about-label">Current role</p>
-          <p class="about-value">Head, Tech &amp; Skills Club</p>
-          <p class="about-meta">ASU Pathways · Sep 2026 – Present</p>
-        </div>
-        <div class="about-block">
-          <p class="about-label">Focus</p>
-          <p class="about-value">AI Red-Teaming &amp; AI Governance</p>
-          <p class="about-meta">NIST AI RMF · OWASP LLM Top 10 · MITRE ATLAS</p>
-        </div>
-        <div class="about-block">
-          <p class="about-label">Currently learning</p>
-          <p class="about-value">SQL &amp; Java</p>
-          <p class="about-meta">In progress · strengthening the CS fundamentals under both tracks</p>
-        </div>
+      <div class="hero-cta" data-intro>
+        <a class="btn acc" href="#work">See the work <span class="arr">→</span></a>
+        <a class="btn ghost" href="mailto:shyamvasansathiskumar@gmail.com">Email me</a>
       </div>
     </div>
-  </div>
-</section>
+    <div class="wrap hero-meta" data-intro>
+      <span class="label bare">6 projects</span><span class="label bare">4 live tools</span><span class="label bare">All public, all checkable</span><span class="label bare scroll-cue">Scroll</span>
+    </div>
+  </section>
 
-<!-- CREDENTIALS -->
-<section class="creds" id="creds" data-navtheme="light">
-  <div class="section-head reveal-up">
-    <p class="eyebrow">03 / CREDENTIALS</p>
-    <h2>Verified so far. <span class="accent">In progress next.</span></h2>
-  </div>
-  <div class="creds-list">
-    <div class="cred-row reveal-up">
-      <span class="cred-status done">ISSUED</span>
-      <div class="cred-body">
-        <p class="cred-title">Anthropic — 10+ certifications</p>
-        <p class="cred-meta">AI Fluency: Framework &amp; Foundations · Building with the Claude API · Model Context Protocol · Agents and Workflows · Prompt Engineering Techniques · and others</p>
+  <!-- 01 · why -->
+  <section id="why" data-stage="1" data-chapter="Why">
+    <div class="wrap grid">
+      <div class="col-l"><p class="label" data-scramble>01 · Why this work</p></div>
+      <div class="col-r stack">
+        <h2 class="h1" data-split>AI breaks two ways. <em>Somebody breaks it, or it breaks things on its own.</em></h2>
+        <p class="body big" data-rise>Most security frameworks only model the first. My <a href="https://github.com/shyamvasansathiskumar-ux/ai-incident-atlas" target="_blank" rel="noopener">incident atlas</a> found six public cases where an AI agent destroyed real data with nobody attacking it: a production database, a home directory, a whole drive.</p>
+        <p class="body big" data-rise>So I work both sides. I attack models to see where they fail, and I write the controls and governance that hold when they do. The rule I keep coming back to: <em>telling an agent isn't locking it.</em></p>
       </div>
-      <span class="cred-date">Sep 2026</span>
     </div>
-    <div class="cred-row reveal-up">
-      <span class="cred-status done">ISSUED</span>
-      <div class="cred-body">
-        <p class="cred-title">Arizona State University — Co-Lecturing: Introduction to Engineering</p>
-        <p class="cred-meta">ASU Pathways, Rajalakshmi Engineering College</p>
-      </div>
-      <span class="cred-date">Mar 2026</span>
-    </div>
-    <div class="cred-row reveal-up">
-      <span class="cred-status">IN PROGRESS</span>
-      <div class="cred-body">
-        <p class="cred-title">NIST AI Risk Management Framework</p>
-        <p class="cred-meta">Studying toward applied fluency in the RMF's core functions — Govern, Map, Measure, Manage.</p>
-      </div>
-      <span class="cred-date">—</span>
-    </div>
-    <div class="cred-row reveal-up">
-      <span class="cred-status done">COMPLETED</span>
-      <div class="cred-body">
-        <p class="cred-title">Microsoft AI Red Teaming 101</p>
-        <p class="cred-meta">Video course. Structured foundation alongside the hands-on garak / PyRIT practice in redteam-log.</p>
-      </div>
-      <span class="cred-date">Oct 2026</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT / FOOTER -->
-<footer class="contact" id="contact" data-navtheme="dark">
-  <div class="contact-inner">
-    <p class="eyebrow reveal-up">04 / CONTACT</p>
-    <h2 class="contact-title reveal-up">Let's talk <span class="accent">risk.</span></h2>
-    <a class="contact-email reveal-up" href="mailto:shyamvasansathiskumar@gmail.com">shyamvasansathiskumar@gmail.com</a>
-    <div class="contact-links reveal-up">
-      <a href="https://www.linkedin.com/in/shyamkumar-redteam" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://github.com/shyamvasansathiskumar-ux" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="Shyam_Kumar_Resume.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+  <div class="marquee" aria-hidden="true"><div class="track" data-speed="50"><span>Kaaval</span><span>Kaappu</span><span>FairDoor</span><span>AquaNXT</span><span>UpAid</span><span>Virasat</span></div></div>
+
+  <!-- 02 · work -->
+  <section id="work" class="work" data-chapter="Work">
+    <div class="wrap work-head">
+      <p class="label" data-scramble>02 · The work</p>
+      <h2 class="h1" data-split>Six projects. <em>Try them, don't take my word.</em></h2>
     </div>
-  </div>
-  <div class="contact-bottom">
-    <span>© 2026 Shyam Kumar</span>
-    <span>Chennai, Tamil Nadu, India</span>
-    <span>Built &amp; deployed from scratch</span>
+
+    <article class="proj" data-stage="2" style="--pa:#ec5418">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">01</span><span class="ptag">Agent safety · Python</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Kaa<em>val</em> <span class="tamil">காவல்</span></h3>
+          <p class="pline">A guard between an AI coding agent and the shell, database and tools. Allow, ask or deny before anything runs.</p>
+          <ul class="proof" data-stagger><li><b>6/6</b>real incidents replayed and refused</li><li><b>39</b>tests, no dependencies</li><li><b>Live</b>the real Python, in your browser</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://shyamvasansathiskumar-ux.github.io/kaaval/" target="_blank" rel="noopener">Try it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/kaaval" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-stage="3" style="--pa:#2a3cf2">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">02</span><span class="ptag">Applied cryptography · Java</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Kaap<em>pu</em> <span class="tamil">காப்பு</span></h3>
+          <p class="pline">A 2FA authenticator built from the RFCs, with an encrypted vault whose key is split into shares. Lose your phone, keep your accounts.</p>
+          <ul class="proof" data-stagger><li><b>70</b>tests, every RFC vector</li><li><b>2 of 3</b>shares rebuild the vault</li><li><b>36/36</b>checks pass live on the page</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://shyamvasansathiskumar-ux.github.io/kaappu/" target="_blank" rel="noopener">Try it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/kaappu" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-stage="4" style="--pa:#12734a">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">03</span><span class="ptag">Systems · Simulation</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Fair<em>Door</em></h3>
+          <p class="pline">Rate limiting that can tell a deadline rush from a script flood: count per student, judge the deadline on arrival.</p>
+          <ul class="proof" data-stagger><li><b>68.4 → 0</b>students missing a deadline under attack</li><li><b>90/90</b>browser runs match the Python exactly</li><li><b>Live</b>run the simulation yourself</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://shyamvasansathiskumar-ux.github.io/fairdoor/" target="_blank" rel="noopener">Run it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/fairdoor" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-stage="5" style="--pa:#0b7a75">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">04</span><span class="ptag">Hardware · Venture · In progress</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Aqua<em>NXT</em> <span class="tamil">நீர்</span></h3>
+          <p class="pline">Gravity water filters that tell you how they're doing. Home, Go and Station, with Neer, an on-board assistant that never says "safe" without evidence.</p>
+          <ul class="proof" data-stagger><li><b>3</b>prototypes: kitchen, field, school</li><li><b>Finalist</b>ASU Venture X 2026, REC local round</li><li><b>Nov</b>lab results, then the final in Tempe</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://shyamvasansathiskumar-ux.github.io/aquanxt/" target="_blank" rel="noopener">See it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/aquanxt" target="_blank" rel="noopener">Project</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-stage="6" style="--pa:#7d9a12">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">05</span><span class="ptag">AI · Hackathon · Team</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Up<em>Aid</em></h3>
+          <p class="pline">Evidence-first financial aid discovery. Five agents search institutional policy and answer only with source excerpts. If it's not in the source, it isn't aid.</p>
+          <ul class="proof" data-stagger><li><b>Cintana</b>AI Challenge 2026</li><li><b>34</b>alliance campuses in the registry</li><li><b>155</b>tests</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://upaid-site.vercel.app" target="_blank" rel="noopener">Open it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/Upaid" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj" data-stage="7" style="--pa:#a0752a">
+      <div class="wrap pgrid">
+        <div class="pmeta"><span class="pnum">06</span><span class="ptag">Fintech · Hackathon · Team</span></div>
+        <div class="pbody">
+          <h3 class="pname" data-split>Vira<em>sat</em></h3>
+          <p class="pline">Financial continuity for families: money stranded across RBI, EPFO, IRDAI, SEBI and LIC, brought into one calm record of what to claim next.</p>
+          <ul class="proof" data-stagger><li><b>36 h</b>built at PEC Hacks 4.0</li><li><b>5</b>regulators in one record</li><li><b>Demo</b>runs on sample data, nothing leaves the browser</li></ul>
+          <div class="plinks"><a class="btn acc" href="https://virasatweb-seven.vercel.app" target="_blank" rel="noopener">Open it <span class="arr">↗</span></a><a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux/virasat" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- 03 · research -->
+  <section id="research" data-stage="8" data-chapter="Research">
+    <div class="wrap">
+      <div class="head-row">
+        <p class="label" data-scramble>03 · Research &amp; writing</p>
+        <h2 class="h1" data-split>Findings are only useful <em>once someone can act on them.</em></h2>
+      </div>
+      <div class="tiers" data-stagger>
+        <a class="tier card" href="https://github.com/shyamvasansathiskumar-ux/ai-incident-atlas" target="_blank" rel="noopener"><span class="ttag">Atlas</span><h3 class="h3">ai-incident-atlas</h3><p>Ten public AI incidents mapped across OWASP, MITRE ATLAS and the NIST AI RMF, each with the one control that would have stopped it.</p><span class="tgo">10 incidents · NA-01 to NA-05 ↗</span></a>
+        <a class="tier card" href="https://github.com/shyamvasansathiskumar-ux/ai-governance-portfolio/blob/main/analyses/2026-10-no-adversary-essay.md" target="_blank" rel="noopener"><span class="ttag">Essay</span><h3 class="h3">The AI deleted the database. Nobody attacked it.</h3><p>Every framework assumes an adversary. Six real incidents had none.</p><span class="tgo">Read ↗</span></a>
+        <a class="tier card" href="https://github.com/shyamvasansathiskumar-ux/ai-governance-portfolio/blob/main/analyses/2026-10-ai-coding-agent-production-access.md" target="_blank" rel="noopener"><span class="ttag">Risk assessment</span><h3 class="h3">An AI coding agent with production access</h3><p>NIST AI RMF, DPDP Rules 2025 and CERT-In. Risk register R1–R7, rated High.</p><span class="tgo">Read ↗</span></a>
+        <a class="tier card" href="https://github.com/shyamvasansathiskumar-ux/redteam-log" target="_blank" rel="noopener"><span class="ttag">Red-team log</span><h3 class="h3">OWASP LLM Top 10 → ATLAS</h3><p>All ten classes mapped technique by technique, the Agentic Top 10 started, and a one-command garak harness.</p><span class="tgo">10/10 classes ↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · credentials -->
+  <section id="credentials" data-stage="9" data-chapter="Credentials">
+    <div class="wrap grid">
+      <div class="col-l stack">
+        <p class="label" data-scramble>04 · Credentials</p>
+        <h2 class="h2" data-split>Verified so far. <em>In progress next.</em></h2>
+      </div>
+      <div class="col-r">
+        <ul class="creds" data-stagger>
+          <li><span class="st done">Issued</span><div><b>Anthropic: 10+ certifications</b><p>AI Fluency · Building with the Claude API · Model Context Protocol · Agents and Workflows · Prompt Engineering</p></div><time>Sep 2026</time></li>
+          <li><span class="st done">Completed</span><div><b>Microsoft AI Red Teaming 101</b><p>Alongside the hands-on work in redteam-log.</p></div><time>Oct 2026</time></li>
+          <li><span class="st done">Issued</span><div><b>ASU: Co-Lecturing, Introduction to Engineering</b><p>ASU Pathways, Rajalakshmi Engineering College.</p></div><time>Mar 2026</time></li>
+          <li><span class="st">In progress</span><div><b>NIST AI Risk Management Framework</b><p>Applied in the governance portfolio.</p></div><time>—</time></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · about -->
+  <section id="about" class="ink-band" data-stage="10" data-chapter="About">
+    <div class="wrap grid">
+      <div class="col-l stack">
+        <p class="label" data-scramble>05 · About</p>
+        <blockquote class="h2 quote" data-split>“I'd rather be corrected than <em>confidently wrong.</em>”</blockquote>
+      </div>
+      <div class="col-r stack">
+        <p class="body" data-rise>I'm a second-year CSE student at Rajalakshmi Engineering College, Chennai, and I head the Tech &amp; Skills Club under ASU Pathways. I'm early in this field and building in public on purpose: every claim on this page links to work you can check. Where I built with Claude as a pair programmer, the repo says so.</p>
+        <dl class="facts" data-stagger>
+          <div><dt>Education</dt><dd>B.E. Computer Science &amp; Engineering · REC · 2025–2029</dd></div>
+          <div><dt>Role</dt><dd>Head, Tech &amp; Skills Club · ASU Pathways · <a href="https://tech-skills-council.github.io/" target="_blank" rel="noopener">built its site ↗</a></dd></div>
+          <div><dt>Focus</dt><dd>AI red-teaming · agent safety · AI governance</dd></div>
+          <div><dt>Learning now</dt><dd>garak and PyRIT scans · DSA · Java · SQL</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact" data-stage="11" data-chapter="Contact">
+  <div class="wrap">
+    <p class="label">06 · Contact</p>
+    <p class="big">Let's talk <em>risk.</em></p>
+    <div class="row">
+      <div class="links">
+        <a class="btn acc" href="mailto:shyamvasansathiskumar@gmail.com">shyamvasansathiskumar@gmail.com <span class="arr">↗</span></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/shyamkumar-redteam" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+        <a class="btn ghost" href="https://github.com/shyamvasansathiskumar-ux" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
+        <a class="btn ghost" href="Shyam_Kumar_Resume.pdf" target="_blank" rel="noopener">Résumé <span class="arr">↗</span></a>
+      </div>
+      <small>© 2026 Shyam Kumar · Chennai, India<br>Built in public.</small>
+    </div>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="script.js"></script>
+<script src="gsap.min.js"></script>
+<script src="ScrollTrigger.min.js"></script>
+<script src="SplitText.min.js"></script>
+<script src="ScrambleTextPlugin.min.js"></script>
+<script src="lenis.min.js"></script>
+<script src="motion.js"></script>
+<script type="module" src="scene.js"></script>
 </body>
 </html>
