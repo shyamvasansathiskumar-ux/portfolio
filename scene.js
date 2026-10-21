@@ -93,6 +93,8 @@ createWorld(document.getElementById("world"), async ({ scene, camera, sun }) => 
   const at = (s) => { const i = Math.max(0, Math.min(K.length - 2, Math.floor(s))), f = smooth(0.12, 0.88, s - i); return K[i].map((v, j) => v + (K[i + 1][j] - v) * f); };
   const look = new THREE.Vector3();
 
+  scene.userData.logo = pieces.find((p) => p.key === "pathivu").g;   // shown small and centred while the page loads
+
   return (st) => {
     const c = at(st.stage), t = st.t;
     const mob = st.mobile;
